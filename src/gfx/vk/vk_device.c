@@ -1,6 +1,6 @@
 #include "gfx/vk/vk_device.h"
 
-static VkDeviceQueueCreateInfo vk_device_queue_info(float *queue_priority, uint32_t queue_count, uint32_t queue_index)
+static VkDeviceQueueCreateInfo vk_device_queue_info_init(float *queue_priority, uint32_t queue_count, uint32_t queue_index)
 {
     VkDeviceQueueCreateInfo queue_info =
     {
@@ -15,7 +15,7 @@ static VkDeviceQueueCreateInfo vk_device_queue_info(float *queue_priority, uint3
     return queue_info;
 }
 
-static VkDeviceCreateInfo vk_device_info(VkDeviceQueueCreateInfo *device_queue_infos, uint32_t device_queue_info_count, const char **extensions, const uint32_t extension_count)
+static VkDeviceCreateInfo vk_device_info_init(VkDeviceQueueCreateInfo *device_queue_infos, uint32_t device_queue_info_count, const char **extensions, const uint32_t extension_count)
 {
     VkDeviceCreateInfo device_info =
     {
@@ -58,12 +58,12 @@ vk_device vk_device_init(const char *title, bool debugging)
     uint32_t queue_count = 1;
     uint32_t queue_info_count = (indices.graphics.index != indices.present.index && indices.graphics.index != indices.transfer.index) ? 3 : 1;
 
-    VkDeviceQueueCreateInfo graphics_queue_info = vk_device_queue_info(&queue_priority, queue_count, indices.graphics.index);
-    VkDeviceQueueCreateInfo present_queue_info = vk_device_queue_info(&queue_priority, queue_count, indices.present.index);
-    VkDeviceQueueCreateInfo transfer_queue_info = vk_device_queue_info(&queue_priority, queue_count, indices.transfer.index);
+    VkDeviceQueueCreateInfo graphics_queue_info = vk_device_queue_info_init(&queue_priority, queue_count, indices.graphics.index);
+    VkDeviceQueueCreateInfo present_queue_info = vk_device_queue_info_init(&queue_priority, queue_count, indices.present.index);
+    VkDeviceQueueCreateInfo transfer_queue_info = vk_device_queue_info_init(&queue_priority, queue_count, indices.transfer.index);
     VkDeviceQueueCreateInfo queue_infos[3] = {graphics_queue_info, present_queue_info, transfer_queue_info};
 
-    VkDeviceCreateInfo device_info = vk_device_info(queue_infos, queue_info_count, DEVICE_EXTENSIONS, DEVICE_EXTENSION_COUNT);
+    VkDeviceCreateInfo device_info = vk_device_info_init(queue_infos, queue_info_count, DEVICE_EXTENSIONS, DEVICE_EXTENSION_COUNT);
 
     result = vkCreateDevice(gpu, &device_info, NULL, &device);
 
