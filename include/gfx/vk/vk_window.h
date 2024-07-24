@@ -1,7 +1,7 @@
 #ifndef vk_window_h
 #define vk_window_h
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdbool.h>
 
