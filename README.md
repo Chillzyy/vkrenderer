@@ -11,9 +11,9 @@ Dependencies:
   
   You also might need to recompile the static libraries located in the libs folder, directions for doing that can be found here:
   
-    https://www.glfw.org/docs/latest/compile.html
-    
-    https://xkbcommon.org/doc/current/
+  https://www.glfw.org/docs/latest/compile.html
+  
+  https://xkbcommon.org/doc/current/
 
     
 Note for Linux users:
