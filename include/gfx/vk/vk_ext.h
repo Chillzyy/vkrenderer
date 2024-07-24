@@ -3,9 +3,9 @@
 
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 extern const uint32_t VALIDATION_LAYER_COUNT;
 extern const char *VALIDATION_LAYERS[];
