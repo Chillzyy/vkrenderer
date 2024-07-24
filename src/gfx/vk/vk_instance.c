@@ -32,7 +32,7 @@ static VkInstanceCreateInfo vk_instance_info_init(bool debugging, VkApplicationI
     {
         instance_info.enabledLayerCount = layer_count;
         instance_info.ppEnabledLayerNames = layers;
-        vk_debug_messenger_create_info(&debug_info);
+        vk_debug_messenger_create_info_init(&debug_info);
         instance_info.pNext = (VkDebugUtilsMessengerCreateInfoEXT *) &debug_info;
     }
     else
@@ -40,7 +40,6 @@ static VkInstanceCreateInfo vk_instance_info_init(bool debugging, VkApplicationI
         instance_info.pNext = NULL;
         instance_info.enabledLayerCount = 0;
         instance_info.ppEnabledLayerNames = NULL;
-
     }
 
     return instance_info;
@@ -81,7 +80,6 @@ VkInstance vk_instance_init(const char *title, bool debugging)
         {
             printf("\t %s (spec version: %u)\n", available_extensions[i].extensionName, available_extensions[i].specVersion);
         }
-
     }
 
     VkApplicationInfo app_info = vk_app_info_init(title);
