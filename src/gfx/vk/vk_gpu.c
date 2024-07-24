@@ -44,7 +44,7 @@ static bool vk_gpu_suitability(VkPhysicalDevice gpu, VkSurfaceKHR surface)
     return suitable;
 }
 
-swapchain_support_details vk_swapchain_support(VkPhysicalDevice gpu, VkSurfaceKHR surface)
+swapchain_support_details vk_swapchain_support_init(VkPhysicalDevice gpu, VkSurfaceKHR surface)
 {
     swapchain_support_details details = {0};
 
