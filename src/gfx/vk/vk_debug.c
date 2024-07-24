@@ -5,7 +5,7 @@ VkDebugUtilsMessengerEXT vk_debug_messenger_init(VkInstance instance)
     VkResult result = VK_SUCCESS;
     VkDebugUtilsMessengerEXT debug_messenger = {0};
     VkDebugUtilsMessengerCreateInfoEXT debug_info = {0};
-    vk_debug_messenger_create_info(&debug_info);
+    vk_debug_messenger_create_info_init(&debug_info);
 
     result = vk_debug_messenger_create(instance, &debug_messenger, &debug_info, NULL);
     if (result != VK_SUCCESS)
@@ -70,7 +70,7 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL vk_debug_callback(VkDebugUtilsMessageSever
     return VK_FALSE;
 }
 
-void vk_debug_messenger_create_info(VkDebugUtilsMessengerCreateInfoEXT *debug_info)
+void vk_debug_messenger_create_info_init(VkDebugUtilsMessengerCreateInfoEXT *debug_info)
 {
     debug_info->sType = VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT;
     debug_info->pNext = NULL;
