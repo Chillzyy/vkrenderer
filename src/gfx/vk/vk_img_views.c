@@ -24,7 +24,7 @@ static VkImageViewCreateInfo vk_img_view_info_init(VkImage img, VkFormat img_for
     return img_view_info;
 }
 
-// This is returning VkResult because you can't return a local array from a function
+// This is returning VkResult because you can't return a local array (pointer) from a function
 VkResult vk_img_views_init(vk_device *d, VkImage *imgs, uint32_t img_count, VkFormat img_format, VkImageView *img_views)
 {
     VkResult result = VK_SUCCESS;
