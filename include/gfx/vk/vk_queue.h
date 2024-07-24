@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "vulkan/vulkan.h"
+#include <vulkan/vulkan.h>
 
 typedef struct
 {
