@@ -1,8 +1,8 @@
 #ifndef vk_ext_h
 #define vk_ext_h
 
-#include "vulkan/vulkan.h"
-#include "GLFW/glfw3.h"
+#include <vulkan/vulkan.h>
+#include <GLFW/glfw3.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
