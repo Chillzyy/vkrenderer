@@ -1,8 +1,8 @@
 #ifndef vk_vertex_h
 #define vk_vertex_h
 
-#include "vulkan/vulkan.h"
-#include "cglm/cglm.h"
+#include <vulkan/vulkan.h>
+#include <cglm/cglm.h>
 
 typedef struct
 {
