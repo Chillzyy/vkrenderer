@@ -57,7 +57,7 @@ static VkBufferCreateInfo vk_buffer_info_init(bool separate_queues, uint32_t *qu
     return buffer_info;
 }
 
-static VkSubmitInfo vk_buffer_submit_info(VkCommandBuffer *cmd_buffer, uint32_t cmd_buffer_count)
+static VkSubmitInfo vk_buffer_submit_info_init(VkCommandBuffer *cmd_buffer, uint32_t cmd_buffer_count)
 {
     VkSubmitInfo submit_info =
     {
@@ -115,7 +115,7 @@ static VkResult vk_buffer_copy(vk_device *d, vk_buffer src, vk_buffer dst, VkDev
         return result;
     }
 
-    VkSubmitInfo submit_info = vk_buffer_submit_info(&cmd_buffer, 1);
+    VkSubmitInfo submit_info = vk_buffer_submit_info_init(&cmd_buffer, 1);
 
     result = vkQueueSubmit(d->queues.transfer, 1, &submit_info, VK_NULL_HANDLE);
     if (result != VK_SUCCESS)
