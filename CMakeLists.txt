@@ -66,7 +66,7 @@ add_executable(renderer ${SOURCE_FILES})
 target_include_directories(renderer PRIVATE include)
 target_link_directories(renderer PRIVATE lib)
 target_link_directories(renderer PRIVATE src)
-target_link_libraries(renderer ${CMAKE_SOURCE_DIR}/libs/libglfw3.a ${CMAKE_SOURCE_DIR}/libs/libxkbcommon.a ${CMAKE_SOURCE_DIR}/libs/libpthread.a dl vulkan m)
+target_link_libraries(renderer ${CMAKE_SOURCE_DIR}/libs/libglfw3.a ${CMAKE_SOURCE_DIR}/libs/libxkbcommon.a pthread dl vulkan m)
 
 # Find GLSL shaders
 set(SHADER_PATH ${CMAKE_SOURCE_DIR}/shaders/)
