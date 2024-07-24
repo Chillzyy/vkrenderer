@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <inttypes.h>
-#include "vulkan/vulkan.h"
+#include <vulkan/vulkan.h>
 
 VkDebugUtilsMessengerEXT vk_debug_messenger_init(VkInstance instance);
 void vk_debug_messenger_create_info(VkDebugUtilsMessengerCreateInfoEXT *debug_info);
