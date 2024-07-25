@@ -37,7 +37,7 @@ static bool vk_gpu_suitability(VkPhysicalDevice gpu, VkSurfaceKHR surface)
 
     if (suitable)
     {
-        swapchain_support_details swapchain_support = vk_swapchain_support(gpu, surface);
+        swapchain_support_details swapchain_support = vk_swapchain_support_init(gpu, surface);
         suitable &= (swapchain_support.present_mode_count != 0 && swapchain_support.format_count != 0);
     }
 
