@@ -1,6 +1,6 @@
 #include "gfx/vk/vk_present_img.h"
 
-static VkSubmitInfo vk_submit_info_init(vk_swapchain *s, vk_pipeline *p, VkPipelineStageFlags stages, vk_sync_obj *so)
+static VkSubmitInfo vk_submit_info_init(vk_swapchain *s, vk_pipeline *p, VkPipelineStageFlags *stages, vk_sync_obj *so)
 {
     VkSubmitInfo submit_info =
     {
@@ -8,7 +8,7 @@ static VkSubmitInfo vk_submit_info_init(vk_swapchain *s, vk_pipeline *p, VkPipel
         .pNext = NULL,
         .waitSemaphoreCount = 1,
         .pWaitSemaphores = &so->img_available[s->current_frame],
-        .pWaitDstStageMask = &stages,
+        .pWaitDstStageMask = stages,
         .commandBufferCount = 1,
         .pCommandBuffers = &p->cmd_buffers[s->current_frame],
         .signalSemaphoreCount = 1,
@@ -77,7 +77,8 @@ void vk_present_img(vk_device *d, vk_swapchain *s, vk_pipeline *p, vk_buffer *vb
 
     vk_cmd_buffers_record(s, p->pipeline, p->render_pass, p->cmd_buffers[s->current_frame], vb->buffer, ib->buffer, index_count, img_index);
 
-    VkSubmitInfo submit_info = vk_submit_info_init(s, p, VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, so);
+    VkPipelineStageFlags stages[1] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
+    VkSubmitInfo submit_info = vk_submit_info_init(s, p, stages, so);
 
     result = vkQueueSubmit(d->queues.graphics, 1, &submit_info, so->in_flight[s->current_frame]);
     if (result != VK_SUCCESS)
