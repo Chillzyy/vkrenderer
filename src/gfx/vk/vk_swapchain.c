@@ -91,7 +91,7 @@ vk_swapchain vk_swapchain_init(vk_device *d)
     VkResult result = VK_SUCCESS;
     VkSwapchainKHR swapchain = {0};
 
-    swapchain_support_details swapchain_support = vk_swapchain_support(d->gpu, d->surface);
+    swapchain_support_details swapchain_support = vk_swapchain_support_init(d->gpu, d->surface);
 
     VkSurfaceFormatKHR surface_format = vk_surface_format(swapchain_support.formats, swapchain_support.format_count);
     VkPresentModeKHR present_mode = vk_present_mode(swapchain_support.present_modes, swapchain_support.present_mode_count);
