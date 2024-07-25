@@ -8,6 +8,11 @@ Dependencies:
   
   CGLM: 
   https://github.com/recp/cglm
+
+  glslc (Shader Compiler):
+  https://github.com/google/shaderc/blob/main/downloads.md
+
+  (Don't forget to move glslc into the libs folder (or change the CMake script to search for it in another location))
   
   You also might need to recompile the static libraries located in the libs folder, directions for doing that can be found here:
   
