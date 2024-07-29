@@ -48,9 +48,9 @@ void vk_context_mainloop(vk_context *vk)
 
 void vk_context_destroy(vk_context *vk, bool debugging)
 {
+    vk_swapchain_destroy(&vk->d, &vk->s);
     vk_pipeline_destroy(&vk->d, &vk->p);
     vk_buffers_destroy(&vk->d, &vk->vb, &vk->ib);
     vk_sync_obj_destroy(&vk->d, &vk->so, vk->MAX_FRAMES_IN_FLIGHT);
-    vk_swapchain_destroy(&vk->d, &vk->s);
     vk_device_destroy(&vk->d, debugging);
 }
