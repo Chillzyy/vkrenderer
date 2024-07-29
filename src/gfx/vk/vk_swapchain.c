@@ -4,7 +4,7 @@ static VkSurfaceFormatKHR vk_surface_format(const VkSurfaceFormatKHR *formats, u
 {
     for (uint32_t i = 0; i < format_count; i++)
     {
-        if (formats[i].format == VK_FORMAT_B8G8R8A8_SRGB && formats[i].colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)
+        if (formats[i].format == VK_FORMAT_B8G8R8A8_UNORM && formats[i].colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR)
         {
             return formats[i];
         }
